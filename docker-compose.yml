@@ -1,0 +1,35 @@
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: ssd-redesign-server
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    networks:
+      - ssd-redesign
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: ssd-redesign-client
+    ports:
+      - "47214:80"
+    depends_on:
+      - server
+    networks:
+      - ssd-redesign
+    restart: unless-stopped
+
+networks:
+  ssd-redesign:
+    driver: bridge
