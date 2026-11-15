@@ -40,4 +40,4 @@ npm run build
 
 ## Deploy
 
-`docker compose up -d --build` serves the site on port 47214.
+`docker compose up -d --build` serves the site on port 51558.

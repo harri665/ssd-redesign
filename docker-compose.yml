@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
     container_name: ssd-redesign-client
     ports:
-      - "47214:80"
+      - "51558:80"
     depends_on:
       - server
     networks:
