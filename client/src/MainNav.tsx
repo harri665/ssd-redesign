@@ -24,7 +24,10 @@ function Submenu({ menu, open, onToggle, onClose }: SubmenuProps) {
   }
 
   const onBlur = (event: FocusEvent<HTMLLIElement>) => {
-    if (open && !event.currentTarget.contains(event.relatedTarget as Node | null)) onClose()
+    const next = event.relatedTarget as HTMLElement | null
+    if (!open || event.currentTarget.contains(next)) return
+    if (next?.matches('.main-nav button[aria-controls]')) return
+    onClose()
   }
 
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import Icon from './Icon.tsx'
 import MainNav from './MainNav.tsx'
 import { EMAIL, HOME, JOIN, MAP, SEARCH, SOCIAL, SSD } from './links.ts'
@@ -85,13 +85,13 @@ export default function Layout() {
                 <Icon name={searchOpen ? 'close' : 'search'} size={18} />
                 <span className="visually-hidden">Search</span>
               </button>
-              <Link className="join-button" to={JOIN}>
+              <NavLink className="join-button" to={JOIN}>
                 <Icon name="send" size={16} />
                 Join
                 <span className="join-arrow" aria-hidden="true">
                   <Icon name="chevronRight" size={16} />
                 </span>
-              </Link>
+              </NavLink>
               <button
                 type="button"
                 className="round-button menu-toggle"
